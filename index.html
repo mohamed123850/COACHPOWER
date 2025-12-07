@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المدرب الشخصي | غير حياتك اليوم</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="main.css">
+
+    <!-- Import Map for Gemini SDK -->
+    <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">COACH<span class="text-accent">POWER</span></div>
+            <nav class="nav">
+                <ul class="nav-list" id="navList">
+                    <li><a href="#hero">الرئيسية</a></li>
+                    <li><a href="#about">من أنا</a></li>
+                    <li><a href="#plans">الخطط</a></li>
+                    <li><a href="#transformations">قصص نجاح</a></li>
+                    <li><a href="#booking" class="btn btn-primary btn-sm">ابدأ الآن</a></li>
+                </ul>
+                <button class="mobile-menu-btn" id="menuBtn">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg>
+            </div>
+            <h1>حول جسدك، <br><span class="text-gradient">غير حياتك</span></h1>
+            <p>مدربك الشخصي المحترف لبناء العضلات، خسارة الدهون، وتحسين اللياقة البدنية بأساليب علمية حديثة.</p>
+            <div class="hero-buttons">
+                <a href="#booking" class="btn btn-primary">احجز استشارتك الآن</a>
+                <a href="#plans" class="btn btn-outline">استكشف الخطط</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-dark">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1470&auto=format&fit=crop" alt="Trainer Profile" class="about-image">
+                    <div class="about-caption">
+                        <h3>كابتن أحمد علي</h3>
+                        <p class="text-accent">مدرب معتمد & خبير تغذية</p>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h2 class="section-subtitle">من أنا</h2>
+                    <h3 class="section-title">أكثر من مجرد تدريب، إنه أسلوب حياة</h3>
+                    <p>أساعدك في الوصول لأفضل نسخة من نفسك من خلال برامج تدريبية وتغذوية مصممة خصيصاً لك. خبرتي الممتدة لأكثر من 10 سنوات تضمن لك النتائج بعيداً عن العشوائية.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">🏆</div>
+                            <div>
+                                <h4>شهادات معتمدة</h4>
+                                <p>حاصل على اعتمادات دولية في التدريب والتغذية.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📈</div>
+                            <div>
+                                <h4>متابعة يومية</h4>
+                                <p>دعم متواصل لضمان التزامك وتحقيق أهدافك.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Coach Section -->
+    <section class="section section-ai">
+        <div class="container">
+            <div class="ai-header">
+                <div class="ai-icon">🤖</div>
+                <h2>المساعد الذكي</h2>
+                <p>اكتب هدفك (مثلاً: أريد تضخيم عضلات الصدر) وسيقوم الذكاء الاصطناعي بإعطائك نصيحة سريعة.</p>
+            </div>
+            
+            <div class="ai-card">
+                <div class="input-group">
+                    <input type="text" id="aiInput" placeholder="اكتب استفسارك الرياضي هنا...">
+                    <button id="aiBtn" class="btn btn-primary">إرسال</button>
+                </div>
+                <div id="aiResponse" class="ai-response" style="display: none;">
+                    <div class="response-header">✨ نصيحة الكوتش الذكي:</div>
+                    <p id="aiText"></p>
+                </div>
+                <div id="aiLoading" class="ai-loading" style="display: none;">جاري التحليل...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans" class="section bg-darker">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">خطط التدريب</h2>
+                <p class="text-gray">اختر الباقة التي تناسب أهدافك وميزانيتك</p>
+            </div>
+
+            <div class="plans-grid">
+                <!-- Plan 1 -->
+                <div class="plan-card">
+                    <h3>الخطة الأساسية</h3>
+                    <div class="price">$50<span>/شهر</span></div>
+                    <ul class="plan-features">
+                        <li>✅ برنامج تدريبي مخصص</li>
+                        <li>✅ خطة تغذية عامة</li>
+                        <li>✅ متابعة أسبوعية</li>
+                        <li>✅ دعم عبر البريد الإلكتروني</li>
+                    </ul>
+                    <a href="https://wa.me/1234567890?text=أنا مهتم بالخطة الأساسية" target="_blank" class="btn btn-outline btn-block">اشترك الآن</a>
+                </div>
+
+                <!-- Plan 2 (Recommended) -->
+                <div class="plan-card featured">
+                    <div class="badge">الأكثر مبيعاً</div>
+                    <h3>التحول الشامل</h3>
+                    <div class="price">$100<span>/شهر</span></div>
+                    <ul class="plan-features">
+                        <li>✅ برنامج تدريبي متطور</li>
+                        <li>✅ خطة تغذية مخصصة ودقيقة</li>
+                        <li>✅ تعديلات أسبوعية على الخطة</li>
+                        <li>✅ متابعة واتساب يومية</li>
+                        <li>✅ مكالمة فيديو شهرية</li>
+                    </ul>
+                    <a href="https://wa.me/1234567890?text=أنا مهتم بخطة التحول الشامل" target="_blank" class="btn btn-primary btn-block">اشترك الآن</a>
+                </div>
+
+                <!-- Plan 3 -->
+                <div class="plan-card">
+                    <h3>التدريب الشخصي VIP</h3>
+                    <div class="price">$250<span>/شهر</span></div>
+                    <ul class="plan-features">
+                        <li>✅ كل مميزات التحول الشامل</li>
+                        <li>✅ جلسات تدريب أونلاين مباشرة</li>
+                        <li>✅ تحليل شامل لأسلوب الحياة</li>
+                        <li>✅ مكملات غذائية مقترحة</li>
+                    </ul>
+                    <a href="https://wa.me/1234567890?text=أنا مهتم بخطة VIP" target="_blank" class="btn btn-outline btn-block">اشترك الآن</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transformations Section -->
+    <section id="transformations" class="section bg-dark">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">قصص نجاح</h2>
+                <p class="text-gray">نتائج حقيقية لأشخاص حقيقيين</p>
+            </div>
+
+            <div class="transformations-grid">
+                <!-- Item 1 -->
+                <div class="trans-card">
+                    <div class="trans-images">
+                        <div class="trans-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1470&auto=format&fit=crop" alt="Before">
+                            <span class="img-badge badge-before">قبل</span>
+                        </div>
+                        <div class="trans-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1470&auto=format&fit=crop" alt="After">
+                            <span class="img-badge badge-after">بعد</span>
+                        </div>
+                    </div>
+                    <div class="trans-content">
+                        <h3>محمد سالم</h3>
+                        <p>خسارة 20 كجم في 4 شهور مع زيادة في الكتلة العضلية.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="trans-card">
+                    <div class="trans-images">
+                        <div class="trans-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1470&auto=format&fit=crop" alt="Before">
+                            <span class="img-badge badge-before">قبل</span>
+                        </div>
+                        <div class="trans-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?q=80&w=1287&auto=format&fit=crop" alt="After">
+                            <span class="img-badge badge-after">بعد</span>
+                        </div>
+                    </div>
+                    <div class="trans-content">
+                        <h3>سارة خالد</h3>
+                        <p>تنشيف وبروز عضلات البطن مع التزام كامل بالخطة الغذائية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="section bg-darker">
+        <div class="container">
+            <div class="booking-container">
+                <div class="booking-info">
+                    <h3>جاهز للتغيير؟</h3>
+                    <p>لا تؤجل هدفك للغد. احجز جلستك الاستشارية المجانية الآن.</p>
+                    <ul class="booking-features">
+                        <li>📅 استشارة مجانية لمدة 15 دقيقة</li>
+                        <li>💬 دعم مباشر عبر الواتساب</li>
+                    </ul>
+                </div>
+                <div class="booking-form-wrapper">
+                    <h3>تواصل معي</h3>
+                    <form id="bookingForm" class="booking-form">
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل</label>
+                            <input type="text" id="name" required placeholder="محمد أحمد">
+                        </div>
+                        <div class="form-group">
+                            <label for="goal">الهدف الرئيسي</label>
+                            <select id="goal">
+                                <option value="خسارة وزن">خسارة وزن</option>
+                                <option value="بناء عضلات">بناء عضلات</option>
+                                <option value="لياقة عامة">لياقة عامة</option>
+                                <option value="تجهيز بطولة">تجهيز بطولة</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">رسالة إضافية</label>
+                            <textarea id="message" rows="3" placeholder="أعاني من إصابة سابقة..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-whatsapp">
+                            <span>ارسال عبر واتساب</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">Facebook</a>
+            </div>
+            <p class="footer-logo">COACH<span class="text-accent">POWER</span></p>
+            <p>&copy; 2024 جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="العودة للأعلى">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
+
+    <!-- Scripts -->
+    <script type="module">
+        import { GoogleGenAI } from "@google/genai";
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menuBtn');
+        const navList = document.getElementById('navList');
+        
+        menuBtn.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        // WhatsApp Booking Logic
+        const bookingForm = document.getElementById('bookingForm');
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const goal = document.getElementById('goal').value;
+            const message = document.getElementById('message').value;
+            
+            const text = `مرحباً كابتن، اسمي ${name}. هدفي هو ${goal}. ${message ? `ملاحظات: ${message}` : ''}`;
+            const url = `https://wa.me/1234567890?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        });
+
+        // Gemini AI Logic
+        const aiBtn = document.getElementById('aiBtn');
+        const aiInput = document.getElementById('aiInput');
+        const aiResponse = document.getElementById('aiResponse');
+        const aiText = document.getElementById('aiText');
+        const aiLoading = document.getElementById('aiLoading');
+
+        const apiKey = process.env.API_KEY || '';
+        const ai = new GoogleGenAI({ apiKey });
+
+        aiBtn.addEventListener('click', async () => {
+            const promptText = aiInput.value.trim();
+            if (!promptText) return;
+
+            // UI Updates
+            aiBtn.disabled = true;
+            aiLoading.style.display = 'block';
+            aiResponse.style.display = 'none';
+
+            try {
+                const model = 'gemini-2.5-flash';
+                const prompt = `
+                    تصرف كمدرب لياقة بدنية محترف وخبير تغذية.
+                    المستخدم يسأل أو يهتم بـ: "${promptText}".
+                    قدم نصيحة قصيرة، مباشرة، ومحفزة (أقل من 60 كلمة) باللغة العربية.
+                `;
+
+                const response = await ai.models.generateContent({
+                    model: model,
+                    contents: prompt,
+                });
+
+                aiText.innerText = response.text;
+                aiResponse.style.display = 'block';
+                aiInput.value = ''; // Clear input field
+            } catch (error) {
+                console.error("Error:", error);
+                aiText.innerText = "حدث خطأ أثناء الاتصال بالمساعد الذكي.";
+                aiResponse.style.display = 'block';
+            } finally {
+                aiLoading.style.display = 'none';
+                aiBtn.disabled = false;
+            }
+        });
+
+        // Back to Top Logic
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
